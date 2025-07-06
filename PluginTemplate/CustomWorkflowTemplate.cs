@@ -10,8 +10,19 @@ namespace PluginTemplate
     /// </summary>
     public class CustomWorkflowTemplate : CodeActivity
     {
+        // Uncomment the following lines to add input and output arguments to your custom workflow activity.
+        //[RequiredArgument]
+        //[Input("Decimal input")]
+        //public InArgument<decimal> DecInput { get; set; }
+
+        //[Output("Decimal output")]
+        //public OutArgument<decimal> DecOutput { get; set; }
         protected override void Execute(CodeActivityContext executionContext)
         {
+            // https://learn.microsoft.com/en-us/power-apps/developer/data-platform/workflow/tutorial-create-workflow-extension
+            // https://learn.microsoft.com/en-us/power-apps/developer/data-platform/workflow/tutorial-create-workflow-extension
+            // https://github.com/microsoft/PowerApps-Samples/tree/master/dataverse/orgsvc/CSharp/WorkflowActivities
+
             //Create the tracing service
             ITracingService tracingService = executionContext.GetExtension<ITracingService>();
 
@@ -24,6 +35,9 @@ namespace PluginTemplate
             {
                 // Workflow business logic goes here.
                 tracingService.Trace("Custom Workflow Started");
+
+                // Uncomment the following lines to return the output.
+                //DecOutput.Set(executionContext, "Output Value Here");
 
                 tracingService.Trace("Custom Workflow Stopped");
             }
